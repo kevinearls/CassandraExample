@@ -10,7 +10,7 @@ import java.util.Map;
 public class ReadDataTest {
     private static Map<String, String> envs = System.getenv();
 
-    private static String CLUSTER_IP = envs.getOrDefault("CLUSTER_IP", "127.0.0.1");
+    private static String CLUSTER_IP = envs.getOrDefault("CLUSTER_IP", "cassandra");
     private static String KEYSPACE_NAME = envs.getOrDefault("KEYSPACE_NAME", "jaeger_v1_cd1");   // jaeger_v1_cd1
     private static String QUERY = envs.getOrDefault("QUERY", "SELECT COUNT(*) FROM traces");  // select count(*) from traces
 
