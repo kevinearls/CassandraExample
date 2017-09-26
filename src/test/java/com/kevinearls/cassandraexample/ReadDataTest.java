@@ -1,10 +1,12 @@
 package test.java.com.kevinearls.cassandraexample;
 
 import com.datastax.driver.core.Cluster;
+import com.datastax.driver.core.KeyspaceMetadata;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Session;
 import org.junit.Test;
 
+import java.util.List;
 import java.util.Map;
 
 public class ReadDataTest {
@@ -20,6 +22,15 @@ public class ReadDataTest {
         Cluster.Builder builder = Cluster.builder();
         builder.addContactPoint(CLUSTER_IP);
         Cluster cluster = builder.build();
+
+
+        System.out.println(">>>>>>>>>> List all Keyspaces");
+        List<KeyspaceMetadata> keyspaces = cluster.getMetadata().getKeyspaces();
+        for (KeyspaceMetadata keyspace : keyspaces) {
+            System.out.println(keyspace.getName());
+        }
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
 
         //Creating Session object
         Session session = cluster.connect(KEYSPACE_NAME);
